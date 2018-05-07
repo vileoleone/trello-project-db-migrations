@@ -11,3 +11,9 @@ services:
       MYSQL_ROOT_PASSWORD: callcenter
     ports:
       - 3306:3306
+
+  cache:
+    image: redis:alpine
+    network_mode: bridge
+    ports:
+      - 6379:6379

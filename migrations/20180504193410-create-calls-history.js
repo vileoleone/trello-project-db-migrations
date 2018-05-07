@@ -8,8 +8,7 @@ const callIdForeignKey = {
   table: 'calls',
   mapping: 'call_id',
   rules: {
-    onDelete: 'CASCADE',
-    onUpdate: 'RESTRICT'
+    onDelete: 'CASCADE'
   }
 }
 
