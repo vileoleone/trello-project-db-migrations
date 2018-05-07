@@ -30,6 +30,7 @@ exports.up = async (db) => {
     talking_queue: {type: STRING, length: 250},
     talking_call_id: {type: STRING, length: 100}
   })
+
   await db.addForeignKey(agentsHistoryTable, callIdForeignKey.table, callIdForeignKey.name, {
     talking_call_id: callIdForeignKey.mapping
   }, callIdForeignKey.rules)

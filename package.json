@@ -1,7 +1,7 @@
 {
-  "name": "rds-migrations",
+  "name": "migrator-db",
   "version": "0.0.1",
-  "description": "RDS Migrations",
+  "description": "Database Migrations of Mediator",
   "main": "index.js",
   "license": "MIT",
   "private": true,
