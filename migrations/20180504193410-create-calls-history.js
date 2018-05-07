@@ -28,7 +28,5 @@ exports.up = (db) => (
 )
 
 exports.down = (db) => (
-  db.dropTable(callsHistoryTable, {
-    ifExists: true
-  })
+  db.dropTable(callsHistoryTable)
 )

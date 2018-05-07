@@ -14,7 +14,5 @@ exports.up = (db) => (
 )
 
 exports.down = (db) => (
-  db.dropTable(callsTable, {
-    ifExists: true
-  })
+  db.dropTable(callsTable)
 )
