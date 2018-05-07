@@ -55,8 +55,8 @@ module.exports = () => {
 
     runBlock(isBin, () => (argv.$bin = val))
     runBlock(isFile, () => (argv.$file = val))
-    runBlock(ifParam, () => setParam(val))
     runBlock(isValue, () => setOldParam(val, index))
+    runBlock(ifParam, () => setParam(val))
   })
 
   return argv

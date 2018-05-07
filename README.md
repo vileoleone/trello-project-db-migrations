@@ -27,7 +27,7 @@ node migrator.js --down 2
 
 ## Passar dados de acesso da conexão com parametros
 ```shell
-node migrator.js --up --user root --host 0.0.0.0 --port 3306 --driver mysql --password minha-senha-dificil --database callcenter
+node migrator.js --up --user root --host 0.0.0.0 --port 3306 --driver mysql --password callcenter --database callcenter
 ```
 
 ## Passar dados de acesso da conexão com variáveis de ambiente

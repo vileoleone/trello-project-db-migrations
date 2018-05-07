@@ -3,10 +3,21 @@ const {STRING, BIG_INTEGER, SMALL_INTEGER, INTEGER} = dataType
 const notNull = true
 const callsHistoryTable = 'calls_history'
 
+const callIdForeignKey = {
+  name: 'fk_calls_history_call_id',
+  table: 'calls',
+  mapping: 'call_id',
+  rules: {
+    onDelete: 'CASCADE',
+    onUpdate: 'RESTRICT'
+  }
+}
+
 exports.up = (db) => (
   db.createTable(callsHistoryTable, {
-    'call_id': {type: STRING, length: 100, notNull: true},
-    'agent_id': {type: INTEGER},
+    id: {type: BIG_INTEGER, notNull: true, primaryKey: true, autoIncrement: true},
+    call_id: {type: STRING, length: 100, notNull: true, foreignKey: callIdForeignKey},
+    agent_id: {type: INTEGER},
     timestamp: {type: BIG_INTEGER, length: 20, notNull},
     status: {type: SMALL_INTEGER, notNull},
     queue: {type: STRING, length: 250},

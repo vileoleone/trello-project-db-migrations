@@ -5,7 +5,7 @@ const callsTable = 'calls'
 
 exports.up = (db) => (
   db.createTable(callsTable, {
-    'call_id': {type: STRING, length: 100, unique: true, notNull: true, primaryKey: true},
+    call_id: {type: STRING, length: 100, unique: true, notNull: true, primaryKey: true},
     timestamp: {type: BIG_INTEGER, length: 20, notNull},
     status: {type: SMALL_INTEGER, notNull},
     queue: {type: STRING, length: 250},
