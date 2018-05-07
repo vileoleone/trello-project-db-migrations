@@ -1,3 +1,4 @@
+const path = require('path')
 const args = require('./args')
 const dbMigrate = require('db-migrate')
 const isModule = true
@@ -5,6 +6,7 @@ const {up, down, add, create, user, host, port, driver, password, database} = ar
 const {DB_USER, DB_HOST, DB_PORT, DB_DRIVER, DB_PASS, DB_NAME} = process.env
 const config = {
   env: 'local',
+  cwd: __dirname,
 
   config: {
     local: {
