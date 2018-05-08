@@ -2,19 +2,10 @@ const {dataType} = require('db-migrate-shared')
 const {STRING, BIG_INTEGER, SMALL_INTEGER, INTEGER} = dataType
 const callsHistoryTable = 'calls_history'
 
-const callIdForeignKey = {
-  name: 'fk_calls_history_call_id',
-  table: 'calls',
-  mapping: 'call_id',
-  rules: {
-    onDelete: 'CASCADE'
-  }
-}
-
 exports.up = (db) => (
   db.createTable(callsHistoryTable, {
     id: {type: BIG_INTEGER, notNull: true, primaryKey: true, autoIncrement: true},
-    call_id: {type: STRING, length: 100, notNull: true, foreignKey: callIdForeignKey},
+    call_id: {type: STRING, length: 100, notNull: true},
     agent_id: {type: INTEGER, notNull: false},
     timestamp: {type: BIG_INTEGER, length: 20, notNull: true},
     status: {type: SMALL_INTEGER, notNull: true},
