@@ -11,6 +11,11 @@ exports.up = async (db) => {
     talking_queue: {type: STRING, length: 250},
     talking_call_id: {type: STRING, length: 100}
   })
+
+  const unique = true
+  const indexName = 'unique_agents_history'
+  const indexFields = ['agent_id', 'status', 'timestamp']
+  await db.addIndex(agentsHistoryTable, indexName, indexFields, unique)
 }
 
 exports.down = (db) => (
