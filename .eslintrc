@@ -1,0 +1,21 @@
+{
+    "env": { "es6": true },
+    "parser": "babel-eslint",
+    "plugins": [],
+    "extends": ["standard"],
+    "globals": {
+      "jest": false,
+      "test": false,
+      "expect": false,
+      "describe": false,
+      "afterAll": false,
+      "beforeAll": false,
+      "afterEach": false,
+      "beforeEach": false,
+
+      "expectCall": false,
+      "expectAgent": false,
+      "connections": false
+    }
+  }
+  

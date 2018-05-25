@@ -32,12 +32,6 @@ node migrator.js --up --user root --host 0.0.0.0 --port 3306 --driver mysql --pa
 
 ## Passar dados de acesso da conexão com variáveis de ambiente
 ```shell
-export DB_USER=root
-export DB_HOST=0.0.0.0
-export DB_PORT=3306
-export DB_DRIVER=mysql
-export DB_PASS=minha-senha-dificil
-export DB_NAME=callcenter
-
+export DATABASE_URL='mysql://callcenter:callcenter@0.0.0.0:3306/callcenter'
 node migrator.js --up
 ```
