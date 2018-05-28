@@ -5,6 +5,7 @@ exports.up = async (db) => {
   await db.createTable('agents', {
     id: {type: INTEGER, notNull: true, primaryKey: true, autoIncrement: true}
   })
+  await db.runSql(`ALTER TABLE agents ADD COLUMN status ENUM('OFFLINE', 'AVAILABLE', 'ONTHEPHONE') NOT NULL DEFAULT 'OFFLINE'`)
   await db.addColumn('calls', 'agent_id', {type: INTEGER})
   await db.addForeignKey('calls', 'agents', 'fk_calls_agents', { agent_id: 'id' }, {onDelete: 'RESTRICT', onUpdate: 'RESTRICT'})
   await db.addIndex('calls', 'index_calls_agent_id', ['agent_id'])

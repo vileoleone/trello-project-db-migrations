@@ -5,6 +5,7 @@ const callsTable = 'calls'
 exports.up = async (db) => {
   await db.createTable(callsTable, {
     id: {type: STRING, length: 128, notNull: true, primaryKey: true},
+    bridged_call_id: {type: STRING, length: 128},
     created_at: {type: DATE_TIME, notNull: true},
     answer_at: {type: DATE_TIME},
     agent_offers: {type: SMALLINT, notNull: true, defaultValue: 0},
@@ -17,7 +18,7 @@ exports.up = async (db) => {
     transfered_to: {type: INTEGER}
   })
   await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN direction ENUM('IN', 'OUT', 'AUTO') NOT NULL`)
-  await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN status ENUM('ENQUEUED', 'CONNECTED') NOT NULL`)
+  await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN status ENUM('RINGING', 'HOLDING', 'ANSWERED', 'DISCARDED', 'ABANDONED', 'COMPLETED') NOT NULL`)
   await db.addIndex(callsTable, 'index_calls_caller_number', ['caller_number'])
   await db.addIndex(callsTable, 'index_calls_created_at', ['created_at'])
   await db.addIndex(callsTable, 'index_calls_status', ['status'])
