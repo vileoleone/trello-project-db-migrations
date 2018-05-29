@@ -1,9 +1,11 @@
 const {dataType} = require('db-migrate-shared')
-const {INTEGER} = dataType
+const {INTEGER, STRING, DATE_TIME} = dataType
 
 exports.up = async (db) => {
   await db.createTable('agents', {
-    id: {type: INTEGER, notNull: true, primaryKey: true, autoIncrement: true}
+    id: {type: INTEGER, notNull: true, primaryKey: true, autoIncrement: true},
+    talking_call_id: {type: STRING, length: 128},
+    talking_since: {type: DATE_TIME}
   })
   await db.runSql(`ALTER TABLE agents ADD COLUMN status ENUM('OFFLINE', 'AVAILABLE', 'RINGING', 'ONTHEPHONE') NOT NULL DEFAULT 'OFFLINE'`)
   await db.addColumn('calls', 'agent_id', {type: INTEGER})
