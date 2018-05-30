@@ -9,6 +9,7 @@ exports.up = async (db) => {
     in_completed: {type: SMALLINT, notNull: true, defaultValue: 0},
     out_completed: {type: SMALLINT, notNull: true, defaultValue: 0},
     auto_completed: {type: SMALLINT, notNull: true, defaultValue: 0},
+    rejections: {type: SMALLINT, notNull: true, defaultValue: 0},
     ring_secs: {type: INTEGER, notNull: true, defaultValue: 0}
   })
   await db.runSql('ALTER TABLE agent_summary ADD CONSTRAINT pk_agent_summary PRIMARY KEY (agent_id, queue_id, period)')
