@@ -9,6 +9,9 @@ exports.up = async (db) => {
     in_completed: {type: SMALLINT, notNull: true, defaultValue: 0},
     out_completed: {type: SMALLINT, notNull: true, defaultValue: 0},
     auto_completed: {type: SMALLINT, notNull: true, defaultValue: 0},
+    in_call_secs: {type: INTEGER, notNull: true, defaultValue: 0},
+    out_call_secs: {type: INTEGER, notNull: true, defaultValue: 0},
+    auto_call_secs: {type: INTEGER, notNull: true, defaultValue: 0},
     rejections: {type: SMALLINT, notNull: true, defaultValue: 0},
     in_ring_secs: {type: INTEGER, notNull: true, defaultValue: 0},
     out_ring_secs: {type: INTEGER, notNull: true, defaultValue: 0}
