@@ -18,7 +18,8 @@ exports.up = async (db) => {
     initial_position: {type: INTEGER, notNull: true},
     abandon_position: {type: INTEGER},
     transfered_to: {type: INTEGER},
-    hangup_cause_id: {type: SMALLINT}
+    hangup_cause_id: {type: SMALLINT},
+    trunking_id: {type: SMALLINT}
   })
   await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN abandon_key TINYINT(1)`)
   await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN direction ENUM('IN', 'OUT', 'AUTO') NOT NULL`)
