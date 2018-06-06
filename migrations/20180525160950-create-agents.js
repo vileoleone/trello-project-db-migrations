@@ -6,6 +6,7 @@ exports.up = async (db) => {
     id: {type: INTEGER, notNull: true, primaryKey: true, autoIncrement: true},
     login_extension: {type: STRING, length: 6},
     login_at: {type: DATE_TIME},
+    logout_at: {type: DATE_TIME},
     talking_call_id: {type: STRING, length: 128},
     last_call_rejected_at: {type: DATE_TIME},
     last_call_answered_at: {type: DATE_TIME},

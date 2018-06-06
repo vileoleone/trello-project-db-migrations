@@ -13,6 +13,7 @@ exports.up = async (db) => {
     out_call_secs: {type: INTEGER, notNull: true, defaultValue: 0},
     auto_call_secs: {type: INTEGER, notNull: true, defaultValue: 0},
     rejections: {type: SMALLINT, notNull: true, defaultValue: 0},
+    login_secs: {type: INTEGER, notNull: true, defaultValue: 0},
     in_ring_secs: {type: INTEGER, notNull: true, defaultValue: 0},
     out_ring_secs: {type: INTEGER, notNull: true, defaultValue: 0}
   })
