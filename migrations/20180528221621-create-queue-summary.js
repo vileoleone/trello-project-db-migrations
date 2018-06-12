@@ -32,8 +32,10 @@ exports.up = async (db) => {
 
     auto_hold_secs_completed: {type: INTEGER, notNull: true, defaultValue: 0},
     auto_hold_secs_abandoned: {type: INTEGER, notNull: true, defaultValue: 0},
-    auto_try_secs_completed: {type: INTEGER, notNull: true, defaultValue: 0}
+    auto_try_secs_completed: {type: INTEGER, notNull: true, defaultValue: 0},
+    auto_try_secs_discarded: {type: INTEGER, notNull: true, defaultValue: 0}
   })
+
   await db.runSql('ALTER TABLE queue_summary ADD CONSTRAINT pk_queue_summary PRIMARY KEY (queue_id, period)')
   await db.addForeignKey('queue_summary', 'queues', 'fk_queue_summary_queues', { queue_id: 'id' }, {onDelete: 'RESTRICT', onUpdate: 'RESTRICT'})
   await db.addIndex('queue_summary', 'index_queue_summary_queue_id', ['queue_id'])
