@@ -1,5 +1,5 @@
 const {dataType} = require('db-migrate-shared')
-const {STRING, DATE_TIME, INTEGER, SMALLINT, T} = dataType
+const {STRING, DATE_TIME, INTEGER, SMALLINT} = dataType
 const callsTable = 'calls'
 
 exports.up = async (db) => {
@@ -23,7 +23,7 @@ exports.up = async (db) => {
   })
   await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN abandon_key TINYINT(1)`)
   await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN direction ENUM('IN', 'OUT', 'AUTO') NOT NULL`)
-  await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN status ENUM('RINGING', 'HOLDING', 'ANSWERED', 'DISCARDED', 'ABANDONED', 'COMPLETED') NOT NULL`)
+  await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN status ENUM('HOLDING', 'RINGING', 'ANSWERED', 'COMPLETED', 'ABANDONED') NOT NULL`)
   await db.addIndex(callsTable, 'index_calls_caller_number', ['caller_number'])
   await db.addIndex(callsTable, 'index_calls_created_at', ['created_at'])
   await db.addIndex(callsTable, 'index_calls_status', ['status'])

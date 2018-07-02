@@ -5,7 +5,8 @@ const callsTable = 'calls'
 
 exports.up = async (db) => {
   await db.createTable(queuesTable, {
-    id: {type: STRING, length: 128, notNull: true, primaryKey: true}
+    id: {type: STRING, length: 128, notNull: true, primaryKey: true},
+    name: {type: STRING, length: 256, notNull: true}
   })
   await db.addColumn(callsTable, 'queue_id', {type: STRING, length: 128, notNull: true})
   await db.addForeignKey(callsTable, queuesTable, 'fk_calls_queues', { queue_id: 'id' }, {onDelete: 'RESTRICT', onUpdate: 'RESTRICT'})

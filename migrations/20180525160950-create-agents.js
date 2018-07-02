@@ -4,6 +4,7 @@ const {INTEGER, STRING, DATE_TIME} = dataType
 exports.up = async (db) => {
   await db.createTable('agents', {
     id: {type: INTEGER, notNull: true, primaryKey: true, autoIncrement: true},
+    name: {type: STRING, length: 256, notNull: true},
     login_extension: {type: STRING, length: 6},
     login_at: {type: DATE_TIME},
     pause_at: {type: DATE_TIME},
