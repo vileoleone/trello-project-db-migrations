@@ -8,6 +8,7 @@ exports.up = async (db) => {
     period: {type: DATE_TIME, notNull: true},
     in_completed: {type: SMALLINT, notNull: true, defaultValue: 0},
     out_completed: {type: SMALLINT, notNull: true, defaultValue: 0},
+    out_discarded: {type: SMALLINT, notNull: true, defaultValue: 0},
     auto_completed: {type: SMALLINT, notNull: true, defaultValue: 0},
     in_call_secs: {type: INTEGER, notNull: true, defaultValue: 0},
     out_call_secs: {type: INTEGER, notNull: true, defaultValue: 0},
