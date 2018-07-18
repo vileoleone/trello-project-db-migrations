@@ -19,11 +19,12 @@ exports.up = async (db) => {
     abandon_position: {type: INTEGER},
     hangup_cause_id: {type: SMALLINT},
     trunking_id: {type: SMALLINT},
-    transfered_to: {type: STRING}
+    transfered_to: {type: STRING},
+    reason: {type: STRING}
   })
   await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN abandon_key TINYINT(1)`)
   await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN direction ENUM('IN', 'OUT', 'AUTO') NOT NULL`)
-  await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN status ENUM('HOLDING', 'RINGING', 'ANSWERED', 'COMPLETED', 'ABANDONED') NOT NULL`)
+  await db.runSql(`ALTER TABLE ${callsTable} ADD COLUMN status ENUM('DIALING', 'ENQUEUED', 'CONNECTED', 'COMPLETED', 'ABANDONED', 'DISCARDED') NOT NULL`)
   await db.addIndex(callsTable, 'index_calls_caller_number', ['caller_number'])
   await db.addIndex(callsTable, 'index_calls_created_at', ['created_at'])
   await db.addIndex(callsTable, 'index_calls_status', ['status'])
