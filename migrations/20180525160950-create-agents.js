@@ -15,7 +15,7 @@ exports.up = async (db) => {
     last_call_answered_at: {type: DATE_TIME},
     talking_since: {type: DATE_TIME}
   })
-  await db.runSql(`ALTER TABLE agents ADD COLUMN status ENUM('OFFLINE', 'ONLINE', 'RINGING', 'ONTHEPHONE', 'PAUSED') NOT NULL DEFAULT 'OFFLINE'`)
+  await db.runSql(`ALTER TABLE agents ADD COLUMN status ENUM('OFFLINE', 'ONLINE', 'RINGING', 'DIALING', 'ONTHEPHONE', 'PAUSED') NOT NULL DEFAULT 'OFFLINE'`)
   await db.runSql(`ALTER TABLE agents ADD COLUMN pause_reason_id TINYINT`)
   await db.addColumn('calls', 'agent_id', {type: INTEGER})
   await db.addForeignKey('calls', 'agents', 'fk_calls_agents', { agent_id: 'id' }, {onDelete: 'RESTRICT', onUpdate: 'RESTRICT'})
