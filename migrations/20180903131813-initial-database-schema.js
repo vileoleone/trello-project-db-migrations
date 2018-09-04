@@ -58,7 +58,7 @@ const run01CreateCalls = async (db) => {
     initial_position: {type: INTEGER, notNull: true},
     abandon_key: {type: 'TINYINT', length: 1},
     abandon_position: {type: INTEGER},
-    transfered_to: {type: STRING},
+    transferred_to: {type: STRING},
     recording_status: {type: 'ENUM', length: "'AVAILABLE', 'ARCHIVED', 'DELETED'"},
     recording_storage_id: {type: INTEGER},
     hangup_cause_id: {type: SMALLINT},
