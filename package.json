@@ -1,7 +1,7 @@
 {
-  "name": "migrator-db",
+  "name": "callcenter-db",
   "version": "0.0.1",
-  "description": "Database Migrations of Mediator",
+  "description": "Database Migrations and statements for vonix callcenter",
   "main": "index.js",
   "license": "MIT",
   "private": true,
