@@ -1,5 +1,5 @@
 const execute = require('../lib/execute')
-const toDate = require('../lib/toDate')
+const timestampSecsToDate = require('../lib/timestampSecsToDate')
 
 const CALL_UPDATE_ABANDON = `
   UPDATE calls SET
@@ -17,7 +17,7 @@ const CALL_UPDATE_ABANDON = `
 
 module.exports = (mysql) => (call) => execute(mysql, CALL_UPDATE_ABANDON, [
   call.agentId,
-  toDate(call.hangupAt),
+  timestampSecsToDate(call.hangupAt),
   call.holdSecs,
   call.initialPosition,
   call.abandonPosition,

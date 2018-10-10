@@ -1,5 +1,5 @@
 const execute = require('../lib/execute')
-const toDate = require('../lib/toDate')
+const timestampSecsToDate = require('../lib/timestampSecsToDate')
 
 const AGENT_UPDATE_REJECT = `
   UPDATE agents SET
@@ -11,9 +11,9 @@ const AGENT_UPDATE_REJECT = `
 `
 
 module.exports = (mysql) => (agent) => execute(mysql, AGENT_UPDATE_REJECT, [
-  toDate(agent.talkingSince),
+  timestampSecsToDate(agent.talkingSince),
   agent.talkingCallId,
   agent.status,
-  toDate(agent.lastCallRejectedAt),
+  timestampSecsToDate(agent.lastCallRejectedAt),
   agent.id
 ])

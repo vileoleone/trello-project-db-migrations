@@ -1,5 +1,5 @@
 const execute = require('../lib/execute')
-const toDate = require('../lib/toDate')
+const timestampSecsToDate = require('../lib/timestampSecsToDate')
 const defaultToZero = require('../lib/defaultToZero')
 
 const CALL_UPDATE_CALLEND = `
@@ -17,7 +17,7 @@ const CALL_UPDATE_CALLEND = `
 `
 
 module.exports = (mysql) => (call) => execute(mysql, CALL_UPDATE_CALLEND, [
-  toDate(call.hangupAt),
+  timestampSecsToDate(call.hangupAt),
   defaultToZero(call.holdSecs),
   defaultToZero(call.talkSecs),
   defaultToZero(call.ringSecs),

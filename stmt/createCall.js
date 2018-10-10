@@ -1,5 +1,5 @@
 const execute = require('../lib/execute')
-const toDate = require('../lib/toDate')
+const timestampSecsToDate = require('../lib/timestampSecsToDate')
 
 const CALL_INSERT = `INSERT INTO calls
   (id, created_at, caller_number, caller_info, direction, initial_position, queue_id, status, trunking_id, agent_id)
@@ -19,7 +19,7 @@ const CALL_INSERT = `INSERT INTO calls
 
 module.exports = (mysql) => (call) => execute(mysql, CALL_INSERT, [
   call.id,
-  toDate(call.createdAt),
+  timestampSecsToDate(call.createdAt),
   call.callerNumber,
   call.callerInfo,
   call.direction.toUpperCase(),

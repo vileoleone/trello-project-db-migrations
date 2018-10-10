@@ -1,5 +1,5 @@
 const execute = require('../lib/execute')
-const toDate = require('../lib/toDate')
+const timestampSecsToDate = require('../lib/timestampSecsToDate')
 
 const CALL_UPDATE_CONNECTED = `
   UPDATE calls SET
@@ -16,6 +16,6 @@ module.exports = (mysql) => (call, event) => execute(mysql, CALL_UPDATE_CONNECTE
   call.bridgedCallId,
   event.waitSecs,
   event.ringSecs,
-  toDate(event.timestamp),
+  timestampSecsToDate(event.timestamp),
   call.id
 ])
