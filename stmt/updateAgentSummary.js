@@ -1,5 +1,5 @@
-const execute = require('../lib/execute')
-const defaultToZero = require('../lib/defaultToZero')
+import execute from '../lib/execute'
+import defaultToZero from '../lib/defaultToZero'
 
 const AGENT_SUMMARY_UPDATE = `
   INSERT INTO agent_summary (
@@ -35,7 +35,7 @@ const AGENT_SUMMARY_UPDATE = `
     out_ring_secs = out_ring_secs + VALUES(out_ring_secs)
 `
 
-module.exports = (mysql) => (summaryUpdate) => execute(mysql, AGENT_SUMMARY_UPDATE, [
+export default (mysql) => (summaryUpdate) => execute(mysql, AGENT_SUMMARY_UPDATE, [
   summaryUpdate.agentId,
   summaryUpdate.queueId,
   summaryUpdate.period,

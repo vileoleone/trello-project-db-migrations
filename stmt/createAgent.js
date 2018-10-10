@@ -1,7 +1,7 @@
-const execute = require('../lib/execute')
-const timestampSecsToDate = require('../lib/timestampSecsToDate')
+import execute from '../lib/execute'
+import timestampSecsToDate from '../lib/timestampSecsToDate'
 
-module.exports = async (db, dbName, params) => {
+export default async (db, dbName, params) => {
   const sql = `
   INSERT INTO ${dbName}.agents (id, name, password, default_queue_id, active, created_at, updated_at) VALUES (?, ?, ?, ?, 1, ?, ?)
   `

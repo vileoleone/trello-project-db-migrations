@@ -1,6 +1,6 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
-module.exports = async (db, dbName, membership) => {
+export default async (db, dbName, membership) => {
   const sql = `
   INSERT INTO ${dbName}.memberships
   (queue_id, agent_id, penalty, status)

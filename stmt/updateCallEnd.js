@@ -1,6 +1,6 @@
-const execute = require('../lib/execute')
-const timestampSecsToDate = require('../lib/timestampSecsToDate')
-const defaultToZero = require('../lib/defaultToZero')
+import execute from '../lib/execute'
+import timestampSecsToDate from '../lib/timestampSecsToDate'
+import defaultToZero from '../lib/defaultToZero'
 
 const CALL_UPDATE_CALLEND = `
   UPDATE calls SET
@@ -16,7 +16,7 @@ const CALL_UPDATE_CALLEND = `
   WHERE id = ?
 `
 
-module.exports = (mysql) => (call) => execute(mysql, CALL_UPDATE_CALLEND, [
+export default (mysql) => (call) => execute(mysql, CALL_UPDATE_CALLEND, [
   timestampSecsToDate(call.hangupAt),
   defaultToZero(call.holdSecs),
   defaultToZero(call.talkSecs),

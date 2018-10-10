@@ -1,5 +1,5 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
 const QUEUES_SELECT = 'SELECT * FROM queues'
 
-module.exports = (mysql) => () => execute(mysql, QUEUES_SELECT, [])
+export default (mysql) => () => execute(mysql, QUEUES_SELECT, [])

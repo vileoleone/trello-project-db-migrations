@@ -1,5 +1,5 @@
-const execute = require('../lib/execute')
-const defaultToZero = require('../lib/defaultToZero')
+import execute from '../lib/execute'
+import defaultToZero from '../lib/defaultToZero'
 
 const CALL_UPDATE_REJECT = `
   UPDATE calls SET
@@ -9,7 +9,7 @@ const CALL_UPDATE_REJECT = `
   WHERE id = ?
 `
 
-module.exports = (mysql) => (callUpdate) => execute(mysql, CALL_UPDATE_REJECT, [
+export default (mysql) => (callUpdate) => execute(mysql, CALL_UPDATE_REJECT, [
   callUpdate.status,
   callUpdate.agentId,
   defaultToZero(callUpdate.ringSecs),

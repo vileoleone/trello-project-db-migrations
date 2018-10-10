@@ -1,9 +1,9 @@
-const execute = require('../lib/execute')
-const timestampSecsToDate = require('../lib/timestampSecsToDate')
+import execute from '../lib/execute'
+import timestampSecsToDate from '../lib/timestampSecsToDate'
 
 const AGENT_UPDATE_TALKING = `UPDATE agents SET status = ?, talking_call_id = ?, talking_since = ? where id = ?`
 
-module.exports = (mysql) => (agent) => execute(mysql, AGENT_UPDATE_TALKING, [
+export default (mysql) => (agent) => execute(mysql, AGENT_UPDATE_TALKING, [
   agent.status,
   agent.talkingCallId,
   timestampSecsToDate(agent.talkingSince),

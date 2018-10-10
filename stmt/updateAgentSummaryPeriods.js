@@ -1,7 +1,7 @@
-const execute = require('../lib/execute')
-const defaultToZero = require('../lib/defaultToZero')
+import execute from '../lib/execute'
+import defaultToZero from '../lib/defaultToZero'
 
-module.exports = (mysql) => (values) => {
+export default (mysql) => (values) => {
   const valuesSql = values.map(value => '(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
   const sql = `INSERT INTO agent_summary
     (agent_id, queue_id, period, login_secs, pause_secs, in_ring_secs, out_ring_secs, in_call_secs, out_call_secs, auto_call_secs) VALUES

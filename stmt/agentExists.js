@@ -1,6 +1,6 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
-module.exports = async (db, customerId, agentId) => {
+export default async (db, customerId, agentId) => {
   let query = `
   SELECT COUNT(*) AS qtd
   FROM ${customerId}.agents

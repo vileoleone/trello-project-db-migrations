@@ -1,4 +1,4 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
 const CALL_UPDATE_ATTEMPT = `
   UPDATE calls SET
@@ -7,4 +7,4 @@ const CALL_UPDATE_ATTEMPT = `
   WHERE id = ?
 `
 
-module.exports = (mysql) => (call) => execute(mysql, CALL_UPDATE_ATTEMPT, [call.agentId, call.id])
+export default (mysql) => (call) => execute(mysql, CALL_UPDATE_ATTEMPT, [call.agentId, call.id])

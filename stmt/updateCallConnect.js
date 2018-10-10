@@ -1,5 +1,5 @@
-const execute = require('../lib/execute')
-const timestampSecsToDate = require('../lib/timestampSecsToDate')
+import execute from '../lib/execute'
+import timestampSecsToDate from '../lib/timestampSecsToDate'
 
 const CALL_UPDATE_CONNECTED = `
   UPDATE calls SET
@@ -11,7 +11,7 @@ const CALL_UPDATE_CONNECTED = `
   WHERE id = ?
 `
 
-module.exports = (mysql) => (call, event) => execute(mysql, CALL_UPDATE_CONNECTED, [
+export default (mysql) => (call, event) => execute(mysql, CALL_UPDATE_CONNECTED, [
   call.status,
   call.bridgedCallId,
   event.waitSecs,

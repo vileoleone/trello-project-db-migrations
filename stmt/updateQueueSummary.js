@@ -1,5 +1,5 @@
-const execute = require('../lib/execute')
-const defaultToZero = require('../lib/defaultToZero')
+import execute from '../lib/execute'
+import defaultToZero from '../lib/defaultToZero'
 
 const QUEUE_SUMMARY_UPDATE = `
   INSERT INTO queue_summary (
@@ -56,7 +56,7 @@ const QUEUE_SUMMARY_UPDATE = `
     auto_try_secs_discarded = auto_try_secs_discarded + VALUES(auto_try_secs_discarded)
 `
 
-module.exports = (mysql) => (summaryUpdate) => execute(mysql, QUEUE_SUMMARY_UPDATE, [
+export default (mysql) => (summaryUpdate) => execute(mysql, QUEUE_SUMMARY_UPDATE, [
   summaryUpdate.queueId,
   summaryUpdate.period,
   summaryUpdate.inCompleted,

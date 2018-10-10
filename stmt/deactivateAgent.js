@@ -1,6 +1,6 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
-module.exports = async (db, dbName, agentId, updatedAt) => {
+export default async (db, dbName, agentId, updatedAt) => {
   const sql = `
   UPDATE ${dbName}.agents SET
   active = 0,

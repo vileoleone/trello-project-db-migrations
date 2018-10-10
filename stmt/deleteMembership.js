@@ -1,6 +1,6 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
-module.exports = async (db, dbName, agentId) => {
+export default async (db, dbName, agentId) => {
   const sql = `
   DELETE FROM ${dbName}.memberships
   WHERE agent_id = ?

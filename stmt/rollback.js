@@ -1,1 +1,1 @@
-module.exports = (mysql) => () => mysql.rollback()
+export default (mysql) => () => mysql.rollback()

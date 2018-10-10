@@ -1,1 +1,1 @@
-module.exports = (mysql) => () => mysql.beginTransaction()
+export default (mysql) => () => mysql.beginTransaction()

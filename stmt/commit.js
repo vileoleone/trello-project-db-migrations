@@ -1,1 +1,1 @@
-module.exports = (mysql) => () => mysql.commit()
+export default (mysql) => () => mysql.commit()

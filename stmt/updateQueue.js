@@ -1,6 +1,6 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
-module.exports = async (db, dbName, params) => {
+export default async (db, dbName, params) => {
   const sql = `
   UPDATE ${dbName}.queues SET
     name = ?,

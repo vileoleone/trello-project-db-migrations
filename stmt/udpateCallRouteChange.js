@@ -1,4 +1,4 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
 const CALL_UPDATE_ROUTECHANGE = `
   UPDATE calls SET
@@ -6,7 +6,7 @@ const CALL_UPDATE_ROUTECHANGE = `
   WHERE id = ?
 `
 
-module.exports = (mysql) => ({ callId, trunkingId }) => execute(mysql, CALL_UPDATE_ROUTECHANGE, [
+export default (mysql) => ({ callId, trunkingId }) => execute(mysql, CALL_UPDATE_ROUTECHANGE, [
   trunkingId,
   callId
 ])

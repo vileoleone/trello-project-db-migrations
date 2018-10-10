@@ -1,4 +1,4 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
 const MEMBERSHIP_UPDATE_STATUS = `
   UPDATE memberships
@@ -7,4 +7,4 @@ const MEMBERSHIP_UPDATE_STATUS = `
   AND queue_id = ?
 `
 
-module.exports = (mysql) => ({ agentId, queueId, status }) => execute(mysql, MEMBERSHIP_UPDATE_STATUS, [status, agentId, queueId])
+export default (mysql) => ({ agentId, queueId, status }) => execute(mysql, MEMBERSHIP_UPDATE_STATUS, [status, agentId, queueId])

@@ -1,4 +1,4 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
 const QUEUES_SUMMARIES_SUM = `SELECT
   queue_id,
@@ -30,4 +30,4 @@ const QUEUES_SUMMARIES_SUM = `SELECT
   GROUP BY queue_id
   `
 
-module.exports = (mysql) => async (start, end) => execute(mysql, QUEUES_SUMMARIES_SUM, [start, end])
+export default (mysql) => async (start, end) => execute(mysql, QUEUES_SUMMARIES_SUM, [start, end])

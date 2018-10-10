@@ -1,5 +1,5 @@
-const execute = require('../lib/execute')
+import execute from '../lib/execute'
 
 const AGENT_SELECT = 'SELECT * FROM agents WHERE id = ?'
 
-module.exports = (mysql) => async (agentId) => (await execute(mysql, AGENT_SELECT, [agentId]))[0]
+export default (mysql) => async (agentId) => (await execute(mysql, AGENT_SELECT, [agentId]))[0]
