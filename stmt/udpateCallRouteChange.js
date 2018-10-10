@@ -6,7 +6,7 @@ const CALL_UPDATE_ROUTECHANGE = `
   WHERE id = ?
 `
 
-module.exports = (mysql) => ({callId, trunkingId}) => execute(mysql, CALL_UPDATE_ROUTECHANGE, [
+module.exports = (mysql) => ({ callId, trunkingId }) => execute(mysql, CALL_UPDATE_ROUTECHANGE, [
   trunkingId,
   callId
 ])

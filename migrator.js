@@ -1,7 +1,7 @@
 const args = require('./args')
 const dbMigrate = require('db-migrate')
 const isModule = true
-const {up, down, add} = args()
+const { up, down, add } = args()
 
 const config = {
   env: 'local',

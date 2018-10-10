@@ -7,4 +7,4 @@ const MEMBERSHIP_UPDATE_STATUS = `
   AND queue_id = ?
 `
 
-module.exports = (mysql) => ({agentId, queueId, status}) => execute(mysql, MEMBERSHIP_UPDATE_STATUS, [status, agentId, queueId])
+module.exports = (mysql) => ({ agentId, queueId, status }) => execute(mysql, MEMBERSHIP_UPDATE_STATUS, [status, agentId, queueId])
