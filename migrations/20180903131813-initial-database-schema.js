@@ -20,11 +20,13 @@ exports.up = async (db) => {
   await run08CreateMemberships(db)
   await run09CreateMembershipHistory(db)
   await run10CreateQueueHistory(db)
+  await run11CreatePauseReason(db)
   await runCreateForeignKeys(db)
 }
 
 exports.down = async (db) => {
   await runDropForeignKeys(db)
+  await run11DropPauseReason(db)
   await run10DropQueueHistory(db)
   await run09DropMembershipHistory(db)
   await run08DropMemberships(db)
@@ -225,6 +227,14 @@ const run10CreateQueueHistory = async (db) => {
   await db.addIndex('queue_history', 'index_queue_history_created_at', ['created_at'])
 }
 
+const run11CreatePauseReason = async (db) => {
+  await db.createTable('pause_reasons', {
+    id: { type: SMALLINT, notNull: true, primaryKey: true, autoIncrement: true },
+    description: { type: STRING, length: 128, notNull: true },
+    max_pause_secs: { type: INTEGER, notNull: true, defaultValue: 0 }
+  })
+}
+
 const runCreateForeignKeys = async (db) => {
   await db.addForeignKey('calls', 'queues', 'fk_calls_queues', { queue_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
   await db.addIndex('calls', 'index_calls_queue_id', ['queue_id'])
@@ -280,6 +290,10 @@ const runDropForeignKeys = async (db) => {
   await db.removeForeignKey('call_history', 'fk_call_history_calls')
   await db.removeForeignKey('calls', 'fk_calls_agents')
   await db.removeForeignKey('calls', 'fk_calls_queues')
+}
+
+const run11DropPauseReason = async (db) => {
+  await db.dropTable('pause_reasons')
 }
 
 const run10DropQueueHistory = async (db) => {
