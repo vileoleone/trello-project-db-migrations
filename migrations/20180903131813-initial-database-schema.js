@@ -123,7 +123,7 @@ const run04CreateAgents = async (db) => {
     active: { type: 'TINYINT', length: 1, notNull: true, defaultValue: 1 },
     created_at: { type: DATE_TIME, notNull: true },
     updated_at: { type: DATE_TIME },
-    pause_reason_id: { type: 'TINYINT' } // diff from original: added
+    pause_reason_id: { type: 'TINYINT' }
   })
 }
 
@@ -152,8 +152,8 @@ const run06CreateAgentSummary = async (db) => {
     rejections: { type: SMALLINT, notNull: true, defaultValue: 0 },
     login_secs: { type: INTEGER, notNull: true, defaultValue: 0 },
     pause_secs: { type: INTEGER, notNull: true, defaultValue: 0 },
-    in_ring_secs: { type: INTEGER, notNull: true, defaultValue: 0 }, // diff from original: distinct in/out of ring_secs
-    out_ring_secs: { type: INTEGER, notNull: true, defaultValue: 0 }, // diff from original: distinct in/out of ring_secs
+    in_ring_secs: { type: INTEGER, notNull: true, defaultValue: 0 },
+    out_ring_secs: { type: INTEGER, notNull: true, defaultValue: 0 },
     in_call_secs: { type: INTEGER, notNull: true, defaultValue: 0 },
     out_call_secs: { type: INTEGER, notNull: true, defaultValue: 0 },
     auto_call_secs: { type: INTEGER, notNull: true, defaultValue: 0 }
@@ -186,8 +186,8 @@ const run07CreateQueueSummary = async (db) => {
     out_try_secs_discarded: { type: INTEGER, notNull: true, defaultValue: 0 },
     auto_hold_secs_completed: { type: INTEGER, notNull: true, defaultValue: 0 },
     auto_hold_secs_abandoned: { type: INTEGER, notNull: true, defaultValue: 0 },
-    auto_try_secs_completed: { type: INTEGER, notNull: true, defaultValue: 0 }, // diff from original: added
-    auto_try_secs_discarded: { type: INTEGER, notNull: true, defaultValue: 0 } // diff from original: added
+    auto_try_secs_completed: { type: INTEGER, notNull: true, defaultValue: 0 },
+    auto_try_secs_discarded: { type: INTEGER, notNull: true, defaultValue: 0 }
   })
 
   await db.runSql('ALTER TABLE queue_summary ADD CONSTRAINT pk_queue_summary PRIMARY KEY (queue_id, period)')
@@ -198,7 +198,7 @@ const run08CreateMemberships = async (db) => {
     queue_id: { ...queueIdType, notNull: true },
     agent_id: { ...agentIdType, notNull: true },
     penalty: { type: SMALLINT, notNull: true, defaultValue: 0 },
-    status: agentStatusesType // diff from original: added
+    status: agentStatusesType
   })
   await db.runSql('ALTER TABLE memberships ADD CONSTRAINT pk_memberships PRIMARY KEY (agent_id, queue_id)')
 }
