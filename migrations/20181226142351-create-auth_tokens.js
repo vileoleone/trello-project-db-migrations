@@ -14,10 +14,8 @@ exports.up = async (db) => {
     updated_at: { type: DATE_TIME }
   })
 
-  await Promise.all([
-    db.runSql(`INSERT INTO roles (name, permissions, created_at) VALUES ('handler-events', '${JSON.stringify({ resources: [{ method: 'GET', path: '/events/latest' }] })}', NOW())`),
-    db.runSql(`INSERT INTO roles (name, permissions, created_at) VALUES ('cc-master', '${JSON.stringify({ resources: { method: '*', path: '/*' } })}', NOW())`)
-  ])
+  await db.runSql(`INSERT INTO roles (name, permissions, created_at) VALUES ('master', '${JSON.stringify({ resources: [{ method: '*', path: '/*' }] })}', NOW())`)
+  await db.runSql(`INSERT INTO roles (name, permissions, created_at) VALUES ('handler-events', '${JSON.stringify({ resources: [{ method: 'GET', path: '/events/latest' }] })}', NOW())`)
 
   await db.createTable('applications', {
     id: { ...applicationIdType, primaryKey: true },
@@ -29,8 +27,9 @@ exports.up = async (db) => {
 
   await db.addIndex('applications', 'applications_active', ['active'])
 
+  await db.runSql("INSERT INTO applications (id, name, created_at) VALUES ('support-staff', 'support-staff', NOW())")
   await db.runSql("INSERT INTO applications (id, name, created_at) VALUES ('handler-events', 'handler-events', NOW())")
-  await db.runSql("INSERT INTO applications (id, name, created_at) VALUES ('dialer', 'handler-events', NOW())")
+  await db.runSql("INSERT INTO applications (id, name, created_at) VALUES ('dialer', 'dialer', NOW())")
   await db.runSql("INSERT INTO applications (id, name, created_at) VALUES ('cc', 'cc', NOW())")
 
   await db.createTable('auth_tokens', {
