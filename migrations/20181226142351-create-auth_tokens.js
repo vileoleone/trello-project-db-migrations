@@ -45,13 +45,12 @@ exports.up = async (db) => {
   })
 
   await db.addForeignKey('auth_tokens', 'applications', 'fk_auth_tokens_applications', { application_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
-  await db.addIndex('auth_tokens', 'auth_tokens_application_id', ['application_id'], true)
+  await db.addIndex('auth_tokens', 'auth_tokens_application_id', ['application_id'])
 
   await db.addForeignKey('auth_tokens', 'roles', 'fk_auth_tokens_roles', { role_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
-  await db.addIndex('auth_tokens', 'auth_tokens_role_id', ['role_id'], true)
+  await db.addIndex('auth_tokens', 'auth_tokens_role_id', ['role_id'])
 
   await db.addIndex('auth_tokens', 'unique_auth_tokens_uuid', ['uuid'], true)
-  await db.addIndex('auth_tokens', 'auth_tokens_disabled_at', ['disabled_at'])
 }
 
 exports.down = async (db) => {
