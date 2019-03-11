@@ -17,3 +17,13 @@ services:
     network_mode: bridge
     ports:
       - 6379:6379
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: callcenter
+      ACTIVEMQ_ADMIN_PASSWORD: vonix123vonix123
+
+  broker:
+    image: webcenter/activemq
+    network_mode: bridge
+    ports:
+      - 8161:8161
+      - 61613:61613
