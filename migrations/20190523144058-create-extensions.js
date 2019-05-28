@@ -37,7 +37,7 @@ exports.up = async (db) => {
 }
 
 exports.down = async (db) => {
-  // await db.dropTable('extension_dial_permissions')
+  await db.dropTable('extension_dial_permissions')
   await db.dropTable('extensions')
   await db.dropTable('lcr_profiles')
   await db.dropTable('extension_models')
