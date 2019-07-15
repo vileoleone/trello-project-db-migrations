@@ -53,8 +53,8 @@ module.exports = () => {
     const ifParam = index > 1 && isParam(val)
     const isValue = index > 1 && nextVal
 
-    runBlock(isBin, () => (argv.$bin = val))
-    runBlock(isFile, () => (argv.$file = val))
+    runBlock(isBin, () => { argv.$bin = val })
+    runBlock(isFile, () => { argv.$file = val })
     runBlock(isValue, () => setOldParam(val, index))
     runBlock(ifParam, () => setParam(val))
   })
