@@ -31,7 +31,7 @@ const clearParam = (p) => {
 const runBlock = (cond, block) => cond && block()
 
 module.exports = () => {
-  let argv = {}
+  const argv = {}
   let nextVal = false
 
   const setParam = (val) => {
