@@ -1,6 +1,3 @@
-const { dataType } = require('db-migrate-shared')
-const { STRING } = dataType
-
 exports.up = async (db) => {
   await db.runSql('ALTER TABLE patterns DROP FOREIGN KEY fk_patterns_routes')
   await db.runSql('ALTER TABLE routes MODIFY COLUMN id INT NOT NULL AUTO_INCREMENT')
