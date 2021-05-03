@@ -3,7 +3,7 @@ const { STRING } = dataType
 
 exports.up = async (db) => {
   await db.addColumn('chats', 'bot_id', { type: STRING, length: 128, notNull: true })
-  await db.addForeignKey('chats', 'applications', 'fk_bot_application_id', { bot_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
+  await db.addForeignKey('chats', 'bots', 'fk_chat_bot_id', { bot_id: 'application_id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
 }
 
 exports.down = async (db) => {
