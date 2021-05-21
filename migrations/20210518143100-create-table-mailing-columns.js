@@ -1,23 +1,21 @@
 const { dataType } = require('db-migrate-shared')
-const { BIGINT, DATE_TIME, STRING, INTEGER, BOOLEAN } = dataType
+const { BIGINT, DATE_TIME, STRING } = dataType
 
 exports.up = async (db) => {
   await db.createTable('mailing_columns', {
     id: { type: BIGINT, notNull: true, primaryKey: true, autoIncrement: true },
-    mailing_source_id: { notNull: true, type: BIGINT },
 
     created_at: { type: DATE_TIME, notNull: true, defaultValue: 'CURRENT_TIMESTAMP' },
     updated_at: { type: DATE_TIME, notNull: true, defaultValue: 'CURRENT_TIMESTAMP' },
     deleted_at: { type: DATE_TIME, notNull: false },
 
+    queue_id: { notNull: true, type: STRING, length: 128 },
     column_type: { type: STRING, length: 36, notNull: true },
-    column_label: { type: STRING, length: 256, notNull: true },
-    column_order: { type: INTEGER, notNull: true },
-    column_errors: { type: BOOLEAN, notNull: true, defaultValue: false }
+    column_label: { type: STRING, length: 256, notNull: true }
   })
 
-  await db.addIndex('mailing_columns', 'idx_mailing_columns_source', ['mailing_source_id'])
-  await db.addForeignKey('mailing_columns', 'mailing_sources', 'fk_mailing_columns_source', { mailing_source_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
+  await db.addIndex('mailing_columns', 'idx_mlng_cls', ['queue_id', 'column_type', 'column_label', 'deleted_at'], true)
+  await db.addForeignKey('mailing_columns', 'queues', 'fk_mlng_cls', { queue_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
 }
 
 exports.down = async (db) => (
