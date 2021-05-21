@@ -11,8 +11,8 @@ exports.up = async (db) => {
     seeded_at: { type: DATE_TIME, notNull: false },
     deleted_at: { type: DATE_TIME, notNull: false },
 
-    source_key: { type: STRING, length: 256, notNull: true },
-    source_name: { type: STRING, length: 256, notNull: true },
+    source_key: { type: STRING, length: 255, notNull: true },
+    source_name: { type: STRING, length: 255, notNull: true },
     source_mime: { type: STRING, length: 15, notNull: true },
     source_size: { type: BIGINT, notNull: true, defaultValue: 0 },
     source_contacts: { type: INTEGER, notNull: true, defaultValue: 0 },

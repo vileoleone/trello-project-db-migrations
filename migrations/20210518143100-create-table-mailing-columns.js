@@ -11,7 +11,7 @@ exports.up = async (db) => {
 
     queue_id: { notNull: true, type: STRING, length: 128 },
     column_type: { type: STRING, length: 36, notNull: true },
-    column_label: { type: STRING, length: 256, notNull: true }
+    column_label: { type: STRING, length: 255, notNull: true }
   })
 
   await db.addIndex('mailing_columns', 'idx_mlng_cls', ['queue_id', 'column_type', 'column_label', 'deleted_at'], true)

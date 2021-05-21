@@ -13,7 +13,7 @@ exports.up = async (db) => {
     scheduled_at: { type: DATE_TIME, notNull: false },
 
     queue_id: { notNull: true, type: STRING, length: 128 },
-    contact_id: { type: STRING, length: 256, notNull: true },
+    contact_id: { type: STRING, length: 255, notNull: true },
     contact_status: { type: 'ENUM', length: contactStatus, notNull: true, defaultValue: 'IMPORTED' },
     contact_retries: { type: INTEGER, notNull: true, defaultValue: 0 }
   })
