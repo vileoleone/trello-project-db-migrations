@@ -10,9 +10,7 @@ exports.up = async (db) => {
     deleted_at: { type: DATE_TIME, notNull: false }
   })
 
-  await db.addIndex('mailing_phones', 'idx_mailing_phones_column', ['mailing_column_id', 'deleted_at'])
-  await db.addIndex('mailing_phones', 'idx_mailing_phones_contact', ['mailing_contact_id', 'deleted_at'])
-
+  await db.addIndex('mailing_phones', 'idx_mailing_phones', ['mailing_column_id', 'mailing_contact_id', 'deleted_at'], true)
   await db.addForeignKey('mailing_phones', 'mailing_columns', 'fk_mailing_phones_column', { mailing_column_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
   await db.addForeignKey('mailing_phones', 'mailing_contacts', 'fk_mailing_phones_contact', { mailing_contact_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
 }

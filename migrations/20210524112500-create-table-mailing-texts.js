@@ -10,8 +10,7 @@ exports.up = async (db) => {
     deleted_at: { type: DATE_TIME, notNull: false }
   })
 
-  await db.addIndex('mailing_texts', 'idx_mailing_texts_column', ['mailing_column_id', 'deleted_at'])
-  await db.addIndex('mailing_texts', 'idx_mailing_texts_contact', ['mailing_contact_id', 'deleted_at'])
+  await db.addIndex('mailing_texts', 'idx_mailing_texts', ['mailing_column_id', 'mailing_contact_id', 'deleted_at'], true)
   await db.runSql('CREATE FULLTEXT INDEX idx_mailing_texts_value ON mailing_texts(mailing_column_value)')
 
   await db.addForeignKey('mailing_texts', 'mailing_columns', 'fk_mailing_texts_column', { mailing_column_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
