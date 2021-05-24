@@ -13,9 +13,9 @@ exports.up = async (db) => {
     deleted_at: { type: DATE_TIME, notNull: false }
   })
 
-  await db.addIndex('mailings_columns', 'idx_mlngs_cls', ['mailing_source_id', 'mailing_column_id', 'deleted_at'])
-  await db.addForeignKey('mailings_columns', 'mailing_sources', 'fk_mlngs_cls_src', { mailing_source_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
-  await db.addForeignKey('mailings_columns', 'mailing_columns', 'fk_mlngs_cls', { mailing_column_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
+  await db.addIndex('mailings_columns', 'idx_mailings_columns', ['mailing_source_id', 'mailing_column_id', 'deleted_at'])
+  await db.addForeignKey('mailings_columns', 'mailing_sources', 'fk_mailings_columns_source', { mailing_source_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
+  await db.addForeignKey('mailings_columns', 'mailing_columns', 'fk_mailings_columns_column', { mailing_column_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
 }
 
 exports.down = (db) => (

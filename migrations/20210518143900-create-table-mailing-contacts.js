@@ -18,9 +18,9 @@ exports.up = async (db) => {
     contact_retries: { type: INTEGER, notNull: true, defaultValue: 0 }
   })
 
-  await db.addIndex('mailing_contacts', 'idx_mlng_cnt_status', ['contact_status'])
-  await db.addIndex('mailing_contacts', 'idx_mlng_cnt', ['queue_id', 'contact_id', 'deleted_at'], true)
-  await db.addForeignKey('mailing_contacts', 'queues', 'fk_mlng_cnt_queue', { queue_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
+  await db.addIndex('mailing_contacts', 'idx_mailing_contacts', ['queue_id', 'contact_id', 'deleted_at'], true)
+  await db.addIndex('mailing_contacts', 'idx_mailing_contacts_status', ['contact_status'])
+  await db.addForeignKey('mailing_contacts', 'queues', 'fk_mailing_contacts_queue', { queue_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
 }
 
 exports.down = async (db) => (

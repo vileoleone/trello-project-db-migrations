@@ -19,9 +19,9 @@ exports.up = async (db) => {
     source_preferences: { type: TEXT, notNull: true }
   })
 
-  await db.addIndex('mailing_sources', 'idx_mlng_src_queue', ['queue_id'])
-  await db.addIndex('mailing_sources', 'idx_mlng_src', ['source_key'], true)
-  await db.addForeignKey('mailing_sources', 'queues', 'fk_mlng_queue', { queue_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
+  await db.addIndex('mailing_sources', 'idx_mailing_sources_queue', ['queue_id'])
+  await db.addIndex('mailing_sources', 'idx_mailing_sources_key', ['source_key', 'deleted_at'], true)
+  await db.addForeignKey('mailing_sources', 'queues', 'fk_mailing_sources_queue', { queue_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
 }
 
 exports.down = async (db) => (
