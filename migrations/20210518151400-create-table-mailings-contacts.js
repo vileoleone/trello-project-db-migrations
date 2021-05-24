@@ -7,12 +7,10 @@ exports.up = async (db) => {
     mailing_contact_id: { type: BIGINT, notNull: true },
 
     created_at: { type: DATE_TIME, notNull: true, defaultValue: 'CURRENT_TIMESTAMP' },
-    deleted_at: { type: DATE_TIME, notNull: false }
+    deleted_at: { type: BIGINT, notNull: true, defaultValue: 0 }
   })
 
-  await db.addIndex('mailings_contacts', 'idx_mailings_contacts', ['mailing_source_id', 'mailing_contact_id', 'deleted_at'])
-  await db.addForeignKey('mailings_contacts', 'mailing_sources', 'fk_mailings_contacts_source', { mailing_source_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
-  await db.addForeignKey('mailings_contacts', 'mailing_contacts', 'fk_mailings_contacts_contact', { mailing_contact_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
+  await db.runSql('ALTER TABLE mailings_contacts ADD CONSTRAINT pk_mailings_contacts PRIMARY KEY (mailing_source_id, mailing_contact_id, deleted_at)')
 }
 
 exports.down = (db) => (

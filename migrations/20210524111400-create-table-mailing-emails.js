@@ -3,16 +3,14 @@ const { BIGINT, DATE_TIME, STRING } = dataType
 
 exports.up = async (db) => {
   await db.createTable('mailing_emails', {
-    mailing_column_id: { type: BIGINT, notNull: true },
     mailing_contact_id: { type: BIGINT, notNull: true },
+    mailing_column_id: { type: BIGINT, notNull: true },
     mailing_column_value: { type: STRING, length: 127, notNull: true },
     created_at: { type: DATE_TIME, notNull: true, defaultValue: 'CURRENT_TIMESTAMP' },
-    deleted_at: { type: DATE_TIME, notNull: false }
+    deleted_at: { type: BIGINT, notNull: true, defaultValue: 0 }
   })
 
-  await db.addIndex('mailing_emails', 'idx_mailing_emails', ['mailing_column_id', 'mailing_contact_id', 'deleted_at'], true)
-  await db.addForeignKey('mailing_emails', 'mailing_columns', 'fk_mailing_emails_column', { mailing_column_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
-  await db.addForeignKey('mailing_emails', 'mailing_contacts', 'fk_mailing_emails_contact', { mailing_contact_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })
+  await db.runSql('ALTER TABLE mailing_emails ADD CONSTRAINT pk_mailing_emails PRIMARY KEY (mailing_contact_id, mailing_column_id, deleted_at)')
 }
 
 exports.down = (db) => (

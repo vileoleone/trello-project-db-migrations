@@ -9,7 +9,7 @@ exports.up = async (db) => {
     active: { type: 'TINYINT', length: 1, notNull: true, defaultValue: 1 },
     created_at: { type: DATE_TIME, notNull: true },
     updated_at: { type: DATE_TIME, notNull: true },
-    deleted_at: { type: DATE_TIME, notNull: false }
+    deleted_at: { type: DATE_TIME }
   })
 
   await db.addForeignKey('profilers', 'queues', 'fk_profilers_queues', { queue_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })

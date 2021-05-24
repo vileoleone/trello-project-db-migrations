@@ -6,7 +6,7 @@ const queueIdType = { type: STRING, length: 128 }
 exports.up = async (db) => {
   await db.createTable('queue_properties', {
     id: { type: BIGINT, notNull: true, primaryKey: true, autoIncrement: true },
-    queue_id: { ...queueIdType, notNull: false },
+    queue_id: { ...queueIdType },
     name: { type: STRING, length: 128, notNull: true },
     value: { type: TEXT }
   })

@@ -1,12 +1,14 @@
 {
   "name": "callcenter-db",
-  "version": "0.0.114",
+  "version": "0.0.115",
   "description": "Database Migrations and statements for vonix callcenter",
   "main": "index.js",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "migrations": "sh ./run-migrations.sh",
+    "database": "docker exec -it callcenter-db_db_1 mysql -u callcenter -pcallcenter callcenter"
   },
   "dependencies": {
     "db-migrate": "^0.11.12",

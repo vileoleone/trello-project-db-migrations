@@ -9,9 +9,9 @@ exports.up = async (db) => {
     order: { type: INTEGER, notNull: true },
     direction: { type: 'ENUM', length: "'IN', 'OUT', 'AUTO'", notNull: true },
     created_at: { type: DATE_TIME, notNull: true },
-    sended_at: { type: DATE_TIME, notNull: false },
-    readed_at: { type: DATE_TIME, notNull: false },
-    answered_at: { type: DATE_TIME, notNull: false }
+    sended_at: { type: DATE_TIME },
+    readed_at: { type: DATE_TIME },
+    answered_at: { type: DATE_TIME }
   })
 
   await db.addForeignKey('chat_messages', 'chats', 'fk_chat_messages_chats', { chat_id: 'id' }, { onDelete: 'RESTRICT', onUpdate: 'RESTRICT' })

@@ -8,5 +8,5 @@ exports.up = async (db) => {
 }
 
 exports.down = async (db) => {
-  await db.changeColumn('extensions', 'call_limit', { type: INTEGER, length: 3, notNull: false })
+  await db.changeColumn('extensions', 'call_limit', { type: INTEGER, length: 3 })
 }
