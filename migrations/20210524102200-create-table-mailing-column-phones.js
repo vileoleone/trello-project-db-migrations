@@ -2,7 +2,7 @@ const { dataType } = require('db-migrate-shared')
 const { BIGINT, DATE_TIME, STRING } = dataType
 
 exports.up = async (db) => {
-  await db.createTable('mailing_phones', {
+  await db.createTable('mailing_column_phones', {
     mailing_contact_id: { type: BIGINT, notNull: true },
     mailing_column_id: { type: BIGINT, notNull: true },
     mailing_column_value: { type: STRING, length: 23, notNull: true },
@@ -10,9 +10,9 @@ exports.up = async (db) => {
     deleted_at: { type: BIGINT, notNull: true, defaultValue: 0 }
   })
 
-  await db.runSql('ALTER TABLE mailing_phones ADD CONSTRAINT pk_mailing_phones PRIMARY KEY (mailing_contact_id, mailing_column_id, deleted_at)')
+  await db.runSql('ALTER TABLE mailing_column_phones ADD CONSTRAINT pk_mailing_column_phones PRIMARY KEY (mailing_contact_id, mailing_column_id, deleted_at)')
 }
 
 exports.down = (db) => (
-  db.dropTable('mailing_phones')
+  db.dropTable('mailing_column_phones')
 )
