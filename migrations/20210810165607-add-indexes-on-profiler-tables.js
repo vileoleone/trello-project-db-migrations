@@ -88,10 +88,7 @@ const createTableCallResponses = async (db, isUpgrade = false) => {
     profiler_trees_id: { type: BIGINT },
     profiler_fields_id: { type: BIGINT }
   }
-  if (isUpgrade) {
-    callResponseTable.contact_id = { type: STRING, notNull: false, length: 25 }
-    callResponseTable.profiler_trees_id = { type: STRING, length: 36, notNull: true }
-  }
+  if (isUpgrade) callResponseTable.contact_id = { type: STRING, notNull: false, length: 25 }
   await db.dropTable('call_responses')
   await db.createTable('call_responses', callResponseTable)
 }
