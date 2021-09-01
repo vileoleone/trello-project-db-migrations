@@ -13,7 +13,6 @@ exports.up = async (db) => {
     call_id: { type: STRING, notNull: true, length: 128 },
     profiler_trees_id: { type: BIGINT },
     profiler_fields_id: { type: BIGINT }
-
   })
 
   await db.addIndex('call_responses', 'idx_call_response_call_id', ['call_id'])
