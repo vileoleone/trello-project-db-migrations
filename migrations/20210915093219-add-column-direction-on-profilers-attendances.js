@@ -13,3 +13,5 @@ exports.up = async (db) => {
   await db.addIndex('profilers_attendances', 'idx_profilers_direction', ['direction'])
   await db.addIndex('profilers_attendances', 'idx_profilers_mailing_contacts', ['mailing_contact_id'])
 }
+
+exports.down = () => {}

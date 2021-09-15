@@ -18,3 +18,5 @@ exports.up = async (db) => {
   await db.addIndex('profilers_responses_fields', 'idx_profilers_responses_period', ['val_period'])
   await db.addIndex('profilers_responses_fields', 'idx_profilers_responses_field', ['profiler_field_id'])
 }
+
+exports.down = () => {}
