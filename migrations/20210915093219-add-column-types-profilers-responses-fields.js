@@ -1,5 +1,5 @@
 const { dataType } = require('db-migrate-shared')
-const { DECIMAL, BIGINT, STRING, TEXT, DATETIME } = dataType
+const { DECIMAL, BIGINT, STRING, TEXT, DATE_TIME } = dataType
 
 exports.up = async (db) => {
   await db.runSql('DELETE FROM profilers_responses_fields')
@@ -8,7 +8,7 @@ exports.up = async (db) => {
   await db.addColumn('profilers_responses_fields', 'val_option', { type: STRING, length: 255 })
   await db.addColumn('profilers_responses_fields', 'val_number', { type: DECIMAL, precision: 15, scale: 3 })
   await db.addColumn('profilers_responses_fields', 'val_text', { type: TEXT })
-  await db.addColumn('profilers_responses_fields', 'val_period', { type: DATETIME })
+  await db.addColumn('profilers_responses_fields', 'val_period', { type: DATE_TIME })
 
   await db.removeColumn('profilers_responses_fields', 'answer')
   await db.removeColumn('profilers_responses_fields', 'field_id')
