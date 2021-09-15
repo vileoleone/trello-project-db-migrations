@@ -1,6 +1,6 @@
 
 exports.up = async (db) => {
-  await db.changeColumn('profilers_responses_fields', 'val_TEXT', 'val_text')
+  await db.renameColumn('profilers_responses_fields', 'val_TEXT', 'val_text')
 
   await db.changeColumn('profiler_fields', 'type', {
     type: 'ENUM',
