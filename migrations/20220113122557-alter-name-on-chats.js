@@ -1,8 +1,10 @@
 exports.up = async (db) => {
-  const queryResult = await db.runSql("SELECT id, source_id, name FROM chats where source in ('ZENVIA', 'GUPSHUP', 'TWILIO', '360DIALOG')")
+  const queryResult = await db.runSql("SELECT id, source_id, info FROM chats where source in ('ZENVIA', 'GUPSHUP', 'TWILIO', '360DIALOG')")
   const chats = queryResult.map(chats => ({ ...chats }))
   for (const chat of chats) {
-    const name = `${chat.name.trim()} - ${chat.source_id.trim()}`
+    const info = chat.info ? JSON.parse(chat.info) : { firstName: '', lastName: '' }
+    let name = `${info.firstName} ${chat.lastName || ''}`.trim()
+    name = name ? `${name} - ${chat.source_id}` : chat.source_id
     await updateChat(db, name, chat.id)
   }
 }
