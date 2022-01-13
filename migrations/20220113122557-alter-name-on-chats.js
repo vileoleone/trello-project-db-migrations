@@ -3,7 +3,7 @@ exports.up = async (db) => {
   const chats = queryResult.map(chats => ({ ...chats }))
   for (const chat of chats) {
     const info = chat.info ? JSON.parse(chat.info) : { firstName: '', lastName: '' }
-    let name = `${info.firstName} ${chat.lastName || ''}`.trim()
+    let name = `${info.firstName} ${info.lastName || ''}`.trim()
     name = name ? `${name} - ${chat.source_id}` : chat.source_id
     await updateChat(db, name, chat.id)
   }
@@ -14,7 +14,7 @@ exports.down = async (db) => {
   const chats = queryResult.map(chats => ({ ...chats }))
   for (const chat of chats) {
     const info = chat.info ? JSON.parse(chat.info) : { firstName: '', lastName: '' }
-    const name = `${info.firstName} ${chat.lastName || ''}`.trim()
+    const name = `${info.firstName} ${info.lastName || ''}`.trim()
     await updateChat(db, name, chat.id)
   }
 }
