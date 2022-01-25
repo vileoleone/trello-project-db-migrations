@@ -11,5 +11,5 @@ exports.up = async (db) => {
 }
 
 exports.down = async (db) => {
-  await db.runSql('update chats set chat_secs = 0, chathold_secs = 0, chat_secs = 0')
+  await db.runSql('update chats set chat_secs = 0, hold_secs = 0, chat_secs = 0')
 }
