@@ -2,7 +2,7 @@ const { dataType } = require('db-migrate-shared')
 const { DATE_TIME, STRING, BIGINT, INTEGER, TEXT } = dataType
 
 exports.up = async (db) => {
-  await db.createTable('cc_user_logs', {
+  await db.createTable('users_logs', {
     id: { type: BIGINT, notNull: false, primaryKey: true, autoIncrement: true },
     ref_name: { type: STRING, length: 256, notNull: true },
     ref_id_int: { type: INTEGER },
@@ -15,5 +15,5 @@ exports.up = async (db) => {
 }
 
 exports.down = async (db) => (
-  await db.dropTable('cc_user_logs')
+  await db.dropTable('users_logs')
 )
