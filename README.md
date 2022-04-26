@@ -17,6 +17,9 @@ export DATABASE_URL='mysql://callcenter:callcenter@0.0.0.0:3306/callcenter'
 node migrator.js --up
 ```
 
+### Sincroniar uma base da Nuvem
+make sync-aurora db="nome da base" pass="senha da base"
+
 ### Criar nova migration
 ```shell
 node migrator.js --add nome-da-migration
