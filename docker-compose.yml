@@ -12,6 +12,9 @@ services:
       MYSQL_ROOT_PASSWORD: callcenter
     ports:
       - 3306:3306
+    volumes:
+      - ${PWD}/backup:/tmp/backups
+      - ${PWD}/mysql.cnf:/etc/mysql/my.cnf
 
   cache:
     image: redis:alpine
