@@ -37,6 +37,3 @@ connect_timeout=43200
 max_allowed_packet=2048M
 net_buffer_length=512M
 debug-info=TRUE
-
-[mysqld]
-max_allowed_packet=2048M
