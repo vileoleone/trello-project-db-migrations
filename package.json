@@ -1,6 +1,6 @@
 {
   "name": "callcenter-db",
-  "version": "0.0.217",
+  "version": "0.0.218",
   "description": "Database Migrations and statements for vonix callcenter",
   "main": "index.js",
   "license": "MIT",
