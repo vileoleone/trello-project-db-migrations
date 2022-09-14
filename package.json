@@ -1,6 +1,6 @@
 {
   "name": "callcenter-db",
-  "version": "0.0.235",
+  "version": "0.0.236",
   "description": "Database Migrations and statements for vonix callcenter",
   "main": "index.js",
   "license": "MIT",
@@ -11,16 +11,17 @@
     "database": "docker exec -it callcenter-db_db_1 mysql -u callcenter -pcallcenter callcenter"
   },
   "dependencies": {
-    "db-migrate": "^0.11.12",
-    "db-migrate-mysql": "^2.1.2"
+    "capitalize": "^2.0.4",
+    "db-migrate": "^0.11.13",
+    "db-migrate-mysql": "^2.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.32.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.24.0",
+    "eslint": "^8.23.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-promise": "^6.0.1",
     "eslint-plugin-standard": "^5.0.0"
   }
 }
