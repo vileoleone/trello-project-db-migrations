@@ -6,333 +6,6 @@ const patternsIdType = { type: INTEGER }
 const lcrProfileIdType = { type: SMALLINT }
 const callTypeIdType = { type: INTEGER }
 
-const routesDefault = [
-  {
-    id: 1,
-    call_type_id: 1,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: [],
-    format: 'XX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 2,
-    call_type_id: 2,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: 'XX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 3,
-    call_type_id: 2,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: 'XXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 4,
-    call_type_id: 2,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: 'XXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 5,
-    call_type_id: 3,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: '[2-5]XXXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 6,
-    call_type_id: 4,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: 'XXXXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 7,
-    call_type_id: 5,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: 'XXXXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 8,
-    call_type_id: 6,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: [],
-    format: 'XX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 9,
-    call_type_id: 6,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: [],
-    format: 'XXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 10,
-    call_type_id: 6,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: [],
-    format: 'XXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 11,
-    call_type_id: 7,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: [],
-    format: '[2-6]XXXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 12,
-    call_type_id: 8,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: [],
-    format: 'XXXXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 13,
-    call_type_id: 9,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: 'XXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 14,
-    call_type_id: 9,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: 'XXXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 15,
-    call_type_id: 10,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: '300XXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 16,
-    call_type_id: 10,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: '300XXXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 17,
-    call_type_id: 10,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: '800XXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  },
-  {
-    id: 18,
-    call_type_id: 10,
-    lcr_profile_id: 1,
-    order: 0,
-    ddd: ['XX'],
-    format: '800XXXXXXX',
-    default: true,
-    active: true,
-    patterns: [{
-      order: 0,
-      trunkingId: 1,
-      csp: '',
-      hasAreaCode: true,
-      hasLeadingZero: true,
-      prefix: ''
-    }]
-  }
-]
-
 exports.up = async (db) => {
   await createRoutes(db)
   await createPatterns(db)
@@ -415,8 +88,7 @@ const insertDefaultPatterns = async (db, routeId, patterns) => {
   await Promise.all(
     patterns.map((pattern) => {
       return db.runSql(`
-        INSERT INTO patterns
-          (route_id, trunking_id, order_pattern, csp, prefix, has_area_code, has_leading_zero)
+        INSERT INTO patterns (route_id, trunking_id, order_pattern, csp, prefix, has_area_code, has_leading_zero)
         VALUES (
           ${routeId},
           ${pattern.trunkingId},
@@ -430,3 +102,279 @@ const insertDefaultPatterns = async (db, routeId, patterns) => {
     })
   )
 }
+
+const routesDefault = [
+  {
+    id: 1,
+    call_type_id: 1,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: [],
+    format: 'XX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 2,
+    call_type_id: 2,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: 'XX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 3,
+    call_type_id: 2,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: 'XXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 4,
+    call_type_id: 2,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: 'XXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 5,
+    call_type_id: 3,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: '[2-5]XXXXXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 6,
+    call_type_id: 4,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: 'XXXXXXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 7,
+    call_type_id: 5,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: 'XXXXXXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 8,
+    call_type_id: 6,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: [],
+    format: 'XX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 9,
+    call_type_id: 6,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: [],
+    format: 'XXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 10,
+    call_type_id: 6,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: [],
+    format: 'XXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 11,
+    call_type_id: 7,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: [],
+    format: '[2-6]XXXXXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 12,
+    call_type_id: 8,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: [],
+    format: 'XXXXXXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: ''
+    }]
+  }, {
+    id: 13,
+    call_type_id: 9,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: 'XXXXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: '0800'
+    }]
+  }, {
+    id: 14,
+    call_type_id: 9,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: 'XXXXXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: '0800'
+    }]
+  }, {
+    id: 15,
+    call_type_id: 10,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: '[3,5]00XXXXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: '0'
+    }]
+  }, {
+    id: 16,
+    call_type_id: 10,
+    lcr_profile_id: 1,
+    order: 0,
+    ddd: ['XX'],
+    format: 'cXXXXXXX',
+    default: true,
+    active: true,
+    patterns: [{
+      order: 0,
+      trunkingId: 1,
+      csp: '',
+      hasAreaCode: true,
+      hasLeadingZero: true,
+      prefix: '0'
+    }]
+  }
+]
