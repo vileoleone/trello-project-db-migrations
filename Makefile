@@ -1,9 +1,9 @@
 .PHONY: sync-aurora
 
 sync-aurora:
-	ssh ec2-user@bastion.vonixcc.com.br "rm -Rf /home/ec2-user/bkps/*.bkp && make dump db=${db} pass=${pass}"
-	rsync -Oazv ec2-user@bastion.vonixcc.com.br:/home/ec2-user/bkps/${db}.bkp ./backup/${db}.bkp
-	ssh ec2-user@bastion.vonixcc.com.br "rm -Rf /home/ec2-user/bkps/*.bkp"
+	# ssh ec2-user@bastion.vonixcc.com.br "rm -Rf /home/ec2-user/bkps/*.bkp && make dump db=${db} pass=${pass}"
+	# rsync -Oazv ec2-user@bastion.vonixcc.com.br:/home/ec2-user/bkps/${db}.bkp ./backup/${db}.bkp
+	# ssh ec2-user@bastion.vonixcc.com.br "rm -Rf /home/ec2-user/bkps/*.bkp"
 	docker exec -i callcenter-db_db_1 mysql -h localhost -u root -pcallcenter -e "DROP DATABASE IF EXISTS callcenter"
 	docker exec -i callcenter-db_db_1 mysql -h localhost -u root -pcallcenter -e "CREATE DATABASE IF NOT EXISTS callcenter CHARACTER SET utf8 COLLATE utf8_general_ci"
 	docker exec -i callcenter-db_db_1 mysql -h localhost -u root -pcallcenter callcenter < ./backup/${db}.bkp
