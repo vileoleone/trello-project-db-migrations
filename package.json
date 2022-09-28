@@ -8,7 +8,7 @@
   "scripts": {
     "lint": "eslint .",
     "migrations": "sh ./run-migrations.sh",
-    "database": "docker exec -it callcenter-db_db_1 mysql -u callcenter -pcallcenter callcenter"
+    "database": "docker exec -it callcenter-db-db-1 mysql -u callcenter -pcallcenter callcenter"
   },
   "dependencies": {
     "capitalize": "^2.0.4",

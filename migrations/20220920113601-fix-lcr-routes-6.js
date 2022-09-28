@@ -20,7 +20,7 @@ exports.up = async (db) => {
     profiles[lcrProfileId][callTypeId] = ++orderRouter
 
     const format = formats[callTypeId][orderRouter]
-    console.log(lcrProfileId, route.id, callTypeId, orderRouter, format)
+
     if (route.format === format) continue
 
     if (format) {
