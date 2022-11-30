@@ -3,7 +3,7 @@ const { CHAR, STRING, TEXT } = dataType
 
 exports.up = async (db) => {
   await db.createTable('cc_users', {
-    id: { type: CHAR, length: 36, notNll: false, primaryKey: true },
+    id: { type: CHAR, length: 36, notNull: true, primaryKey: true },
     name: { type: STRING, length: 256 },
     email: { type: STRING, length: 256 },
     admin_permissions: { type: TEXT },

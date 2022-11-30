@@ -3,7 +3,7 @@ const { DATE_TIME, STRING, BIGINT, INTEGER, TEXT } = dataType
 
 exports.up = async (db) => {
   await db.createTable('users_logs', {
-    id: { type: BIGINT, notNull: false, primaryKey: true, autoIncrement: true },
+    id: { type: BIGINT, notNull: true, primaryKey: true, autoIncrement: true },
     ref_name: { type: STRING, length: 256, notNull: true },
     ref_id_int: { type: INTEGER },
     ref_id_str: { type: STRING, length: 128 },
