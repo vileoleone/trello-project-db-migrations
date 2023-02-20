@@ -1,0 +1,50 @@
+version: '3.5'
+
+services:
+  db:
+    image: mysql:5.6
+    network_mode: bridge
+    platform: linux/x86-64/v8
+    container_name: vnx-db
+    environment:
+      MYSQL_DATABASE: callcenter
+      MYSQL_USER: callcenter
+      MYSQL_PASSWORD: callcenter
+      MYSQL_ROOT_PASSWORD: callcenter
+    ports:
+      - 3306:3306
+    volumes:
+      - ${PWD}/backup:/tmp/backups
+      - ${PWD}/mysql.cnf:/etc/mysql/my.cnf
+  # phpMyAdmin:
+  #   image: phpmyadmin:5.2.1-apache
+  #   network_mode: bridge
+  #   container_name: vnx-phpmyadmin
+  #   environment:
+  #     # MYSQL_DATABASE: callcenter
+  #     MYSQL_USER: callcenter
+  #     MYSQL_PASSWORD: callcenter
+  #     MYSQL_ROOT_PASSWORD: callcenter
+  #     PMA_HOST: db
+  #   links:
+  #     - db
+  #   ports:
+  #     - 8080:80
+
+  cache:
+    image: redis:alpine
+    network_mode: bridge
+    container_name: vnx-cache
+    ports:
+      - 6379:6379
+
+  broker:
+    image: webcenter/activemq
+    network_mode: bridge
+    container_name: vnx-broker
+    ports:
+      - 8161:8161
+      - 61613:61613
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: callcenter
+      ACTIVEMQ_ADMIN_PASSWORD: vonix123vonix123
