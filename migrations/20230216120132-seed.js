@@ -12,8 +12,7 @@ exports.up = async (db) => {
     ready_to_test_at: { type: DATE_TIME },
     testing_at: { type: DATE_TIME },
     waiting_deploy_at: { type: DATE_TIME },
-    finish_at: { type: DATE_TIME },
-    deleted_at: { type: DATE_TIME },
+    done_at: { type: DATE_TIME },
     cycle_time: { type: BIGINT, defaulValue: 0 },
     lead_time: { type: BIGINT, defaulValue: 0 },
     step_time: { type: BIGINT, defaulValue: 0 }
@@ -31,7 +30,7 @@ exports.up = async (db) => {
     labels_id: { type: INTEGER }
   }) */
 
-  /* await db.createTable('summaries', {
+  /* await db.createTable('timeline', {
     id: { type: INTEGER, autoIncrement: true, primaryKey: true },
     timestamp: { type: BIGINT, primaryKey: true },
     read_to_do: { type:BIGINT },
@@ -39,10 +38,7 @@ exports.up = async (db) => {
     ready_to_test: { type: BIGINT },
     testing: { type: BIGINT },
     waiting_deploy: {type: BIGINT},
-    finish: { type: BIGINT },
-    cycle_time: { type: BIGINT },
-    lead_time: { type: BIGINT },
-    start_time: { type: BIGINT }
+    done_at
   }) */
 
   // await db.addIndex('cards', 'cards_list_idx', ['list_id'] );
@@ -50,6 +46,6 @@ exports.up = async (db) => {
   // await db.addIndex('card_labels','cards_labels_card_idx', [`card_id`]  )
 }
 
-exports.down = function (db) {
-  return null
+exports.down =  async  function(db) {
+  await db.dropTable('cards')
 }
