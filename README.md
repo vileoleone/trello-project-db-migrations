@@ -3,7 +3,7 @@
 Módulo responsável pelo banco de dados do vonix-blackbox callcenter.
 
 Contém as _migrations_ para gerenciamento/atualização do esquema do banco de dados.
-
+s
 Contém as instruções de acesso e atualização dos dados do banco de dados, de forma
 a centralizar o acesso a dados. *Todo* o acesso a dados ou atualização dos mesmos deve estar
 neste repositório, possibilitando o reuso e consistência entre a versão do esquema e instruções

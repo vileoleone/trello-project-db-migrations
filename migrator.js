@@ -8,7 +8,7 @@ const config = {
   cwd: __dirname
 }
 
-const { DATABASE_URL } = process.env
+const  DATABASE_URL = 'mysql://callcenter:callcenter@0.0.0.0:3306/callcenter'
 const dbName = DATABASE_URL.substr(DATABASE_URL.lastIndexOf('/') + 1)
 
 process.env.DATABASE_URL = DATABASE_URL.substr(0, DATABASE_URL.lastIndexOf('/'))
